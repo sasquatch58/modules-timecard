@@ -369,13 +369,3 @@ function delIt() {
 </table>
 </form>
 * <?php echo $AppUI->_('indicates required field');?>
-<script language="javascript">
-/*
-changeList('item_project_id', projects, <?php echo @$helpdeskItemTask['item_company_id'] ? $helpdeskItemTask['item_company_id'] : 0;?>,0);
-changeList('task_log_help_desk_id', helpDeskItems, <?php echo @$helpdeskItemTask['item_project_id'] ? $helpdeskItemTask['item_project_id'] : 0;?>,3);
-
-selectList( 'item_company_id', <?php echo @$helpdeskItemTask['item_company_id'] ? $helpdeskItemTask['item_company_id'] : 0;?> );
-selectList( 'item_project_id', <?php echo @$helpdeskItemTask['item_project_id'] ? $helpdeskItemTask['item_project_id'] : 0;?> );
-selectList( 'task_log_help_desk_id', <?php echo @$helpdeskItemTask['task_log_help_desk_id'] ? $helpdeskItemTask['task_log_help_desk_id'] : 0;?> );
-*/
-</script> 
