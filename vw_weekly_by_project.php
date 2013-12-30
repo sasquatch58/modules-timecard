@@ -102,10 +102,10 @@
 	$q->addQuery('project_id,project_name,company_name');
 	$q->addTable('projects');
 	$q->addJoin('companies','','projects.project_company=companies.company_id');
-	$where = getPermsWhereClause('companies', 'company_id');
+
 	if($company_id>0){
-		$where .= ' AND projects.project_company = ' . $company_id;
-	}	
+		$where = 'projects.project_company = ' . $company_id;
+	}
 	$q->addWhere($where);
 	$q->addOrder('project_name');
 	$result = $q->loadList();
@@ -191,7 +191,6 @@
 	}
 	$q->addQuery('company_id, company_name');
 	$q->addTable('companies');
-	$q->addWhere(getPermsWhereClause('companies', 'company_id'));
 	$q->addOrder('company_name');
 	$companies = arrayMerge( array( 0 => $AppUI->_('All Entities') ), $q->loadHashList() );
 	//last day of that week, add 6 days

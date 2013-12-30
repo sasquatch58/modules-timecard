@@ -54,10 +54,10 @@ $q->addTable('users', 'u');
 $q->addJoin('contacts','ct','u.user_contact=ct.contact_id');
 $q->addJoin('companies','co','co.company_id=ct.contact_company');
 $q->addQuery('contact_email');
-$where = getPermsWhereClause('companies', 'user_company');
+
 if($company_id>0){
-	$where .= ' AND ct.contact_company = ' . $company_id;
-}  
+	$where .= 'ct.contact_company = ' . $company_id;
+}
 $q->addWhere($where);
 $q->addOrder('contact_first_name, contact_last_name');
 $result = $q->loadList();
@@ -115,10 +115,9 @@ if(isset($ids)) {
 		$start_day -> addDays(-7);
 	}
 }
-$q = new w2p_Database_Query; 
+$q = new w2p_Database_Query;
 $q->addQuery('company_id, company_name');
 $q->addTable('companies');
-$q->addWhere(getPermsWhereClause('companies', 'company_id'));
 $q->addOrder('company_name');
 $companies = arrayMerge( array( 0 => $this->_AppUI->_('All Entities') ), $q->loadHashList() );
 
