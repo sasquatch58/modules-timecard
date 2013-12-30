@@ -42,4 +42,3 @@ if ( $AppUI->isActiveModule('helpdesk')) {
 }
 
 $tabBox->show();
-?>

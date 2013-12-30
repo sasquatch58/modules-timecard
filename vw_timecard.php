@@ -835,4 +835,3 @@ function getHolidaysList($start_day, $user_id) {
     }
     return $holidays;
 }
-?>

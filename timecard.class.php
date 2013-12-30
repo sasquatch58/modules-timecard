@@ -8,4 +8,3 @@ function getPermsWhereClause($mod, $mod_id_field)
 	global $AppUI, $perms;
 	return "1 = 1";	
 }
-?>
