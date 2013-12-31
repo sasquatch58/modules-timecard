@@ -20,9 +20,6 @@ if (!canView('task_log')) {
 	$AppUI->redirect(ACCESS_DENIED);
 }
 
-require_once( $AppUI->getModuleClass( 'projects' ) );
-require_once( $AppUI->getModuleClass( 'tasks' ) ); 
-
 // by kirkawolff
 // recursive function to sort tasks list menu
 function ourTaskTreeSort(&$outarr, &$inarr, $depth, $id)

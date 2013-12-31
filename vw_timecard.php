@@ -8,9 +8,6 @@ if (!defined('W2P_BASE_DIR')) {
 }
 global $TIMECARD_CONFIG, $newTLogTabNum, $AppUI;
 
-require_once( $AppUI->getModuleClass( 'tasks' ) ); 
-
-
 $m = $AppUI->checkFileName(w2PgetParam( $_GET, 'm', getReadableModule() ));
 $canEdit = canEdit( $m );
 if (!$canEdit) {
