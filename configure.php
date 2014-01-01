@@ -14,9 +14,7 @@ if (!$canEdit) {
 
 $CONFIG_FILE = W2P_BASE_DIR . '/modules/timecard/config.php';
 
-$AppUI->savePlace();
-
-$utypes = w2PgetSysVal('UserType'); 
+$utypes = w2PgetSysVal('UserType');
 
 //define user type list
 $user_types = arrayMerge( $utypes, array( '-1' => $AppUI->_('None') ) );

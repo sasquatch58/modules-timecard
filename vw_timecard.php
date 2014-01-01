@@ -8,9 +8,6 @@ if (!defined('W2P_BASE_DIR')) {
 }
 global $TIMECARD_CONFIG, $newTLogTabNum, $AppUI;
 
-require_once( $AppUI->getModuleClass( 'tasks' ) ); 
-
-
 $m = $AppUI->checkFileName(w2PgetParam( $_GET, 'm', getReadableModule() ));
 $canEdit = canEdit( $m );
 if (!$canEdit) {
@@ -138,16 +135,12 @@ span.workhours {
         <td align="right">
             <select name="user_id" onChange="document.user_select.submit();">
             <?php
-            $q = new w2p_Database_Query;
-            $q->addQuery('users.user_contact,users.user_id,co.contact_first_name,co.contact_last_name,co.contact_id'); 
-            $q->addTable('users');
-            $q->addJoin('contacts','co','co.contact_id = users.user_contact','inner');    
-            $q->addWhere('users.user_contact = ' . $AppUI->user_id . ' or (' . getPermsWhereClause('companies', 'user_company') . ')' );
-            $q->addOrder('contact_first_name, contact_last_name');
-            $users = $q->loadList();
-            foreach ($users as $user) { $selected = ($user["user_id"] == $user_id) ? ' selected="selected"' : ''; ?>
-                <option value="<?php echo $user["user_id"]; ?>"<?php echo $selected; ?>><?php echo $user["contact_first_name"]." ".$user["contact_last_name"]; ?></option>
-            <?php } ?>
+            $perms = &$AppUI->acl();
+            $users = $perms->getPermittedUsers('tasks');
+            foreach ($users as $user_key => $user_name) {
+                $selected = ($user_key == $user_id) ? ' selected="selected"' : '';
+                ?><option value="<?php echo $user_key; ?>"<?php echo $selected; ?>><?php echo $user_name; ?></option><?php
+            } ?>
             </select>
         </td>
         <td align="left" nowrap="nowrap"><a href="?m=timecard&amp;tab=0&amp;user_id=<?php echo $AppUI->user_id; ?>"><?php echo '['.$AppUI->_('My Time Card').']';?></a></td>
@@ -835,4 +828,3 @@ function getHolidaysList($start_day, $user_id) {
     }
     return $holidays;
 }
-?>

@@ -19,17 +19,6 @@ $perms = &$AppUI->acl();
 if (!canView('task_log')) {
 	$AppUI->redirect(ACCESS_DENIED);
 }
-//$perms = &$AppUI->acl();
-
-// check permissions
-//$canEdit = $perms->checkModule('task_log', 'edit');
-//$canAdd = $perms->checkModule('task_log', 'add');
-//if (!$canAdd || !$canEdit) {
-//    $AppUI->redirect('m=public&a=access_denied');
-//}
-
-require_once( $AppUI->getModuleClass( 'projects' ) );
-require_once( $AppUI->getModuleClass( 'tasks' ) ); 
 
 // by kirkawolff
 // recursive function to sort tasks list menu
@@ -332,7 +321,6 @@ $(document).ready(function() {
         echo "<input type='hidden' name='task_log_creator' value=".$task['task_log_creator'].">";
     }
     else {
-        //***MOD 20050525 pedroa echo "<input type='hidden' name='task_log_creator' value=".$AppUI->user_id."/>";
         echo "<input type='hidden' name='task_log_creator' value=".$_GET['userid'].">";
     }
 ?>

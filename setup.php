@@ -21,47 +21,15 @@ if (@$a == 'setup') {
 	echo w2PshowModuleConfig( $config );
 }
 
-/*
-// MODULE SETUP CLASS
-	This class must contain the following methods:
-	install - creates the required db tables
-	remove - drop the appropriate db tables
-	upgrade - upgrades tables from previous versions
-*/
-class CSetupTimeCard
+/**
+ * Class CSetupTimeCard
+ */
+class CSetupTimeCard extends w2p_System_Setup
 {
-/*
-	Install routine
-*/
-	function install()
+	public function configure()
 	{
-		global $AppUI;
-		$perms = $AppUI->acl();
-		return $perms->registerModule('TimeCard', 'timecard');
-	}
-/*
-	Removal routine
-*/
-	function remove()
-	{
-		global $AppUI;
-		$perms = $AppUI->acl();
-		return $perms->unregisterModule('timecard');
-	}
-/*
-	Upgrade routine
-*/
-	function upgrade()
-	{
-		return false;
-	}
+        $this->_AppUI->redirect("m=timecard&a=configure");
 
-	function configure()
-	{
-		global $AppUI;
-		$AppUI->redirect("m=timecard&a=configure");
-		return true;
+        return parent::configure();
 	}
 }
-
-?>
