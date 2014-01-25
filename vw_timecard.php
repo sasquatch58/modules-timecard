@@ -708,7 +708,7 @@ function getTodoTasks($user_id) {
     $q->addJoin('companies','c','c.company_id = p.project_company');
     $q->addWhere('u.user_id = ' . $user_id .'');
     $q->addWhere('u.task_id = t.task_id');
-    $q->addWhere('t.task_dynamic = 0');
+    $q->addWhere('t.task_dynamic <> 1'); // see mantis bug 0000705
     $q->addWhere('( t.task_percent_complete < 100 or t.task_percent_complete is null)');
     $q->addWhere('t.task_status = 0');
     $q->addWhere('p.project_active > 0');
