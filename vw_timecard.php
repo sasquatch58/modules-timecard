@@ -11,7 +11,7 @@ global $TIMECARD_CONFIG, $newTLogTabNum, $AppUI;
 $m = $AppUI->checkFileName(w2PgetParam( $_GET, 'm', getReadableModule() ));
 $canEdit = canEdit( $m );
 if (!$canEdit) {
-    $AppUI->redirect( "m=public&amp;a=access_denied" );
+    $AppUI->redirect(ACCESS_DENIED);
 }
 // check permissions
 $canEdit = canEdit('task_log');

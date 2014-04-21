@@ -4,6 +4,8 @@
 * Adapted for Web2project 2.1 by Eureka and colleagues from his company (DILA)
 **/
 
+$company_id = $AppUI->processIntState('TimecardVwTab', TimecardWeeklyReportCompanyId, 'company_id', 1);
+
 global $tab,$TIMECARD_CONFIG;
 $show_possible_hours_worked = $TIMECARD_CONFIG['show_possible_hours_worked'];
 //grab hours per day from config
@@ -21,10 +23,6 @@ if (isset( $_GET['start_date'] )) {
 }
 $start_day = new w2p_Utilities_Date( $this->_AppUI->getState( 'TimecardWeeklyReportStartDate' ) ? $this->_AppUI->getState( 'TimecardWeeklyReportStartDate' ) : NULL);
 
-if (isset( $_GET['company_id'] )) {
-	$this->_AppUI->setState( 'TimecardWeeklyReportCompanyId', $_GET['company_id'] );
-}
-$company_id = $this->_AppUI->getState( 'TimecardWeeklyReportCompanyId' ) ? $this->_AppUI->getState( 'TimecardWeeklyReportCompanyId' ) : 0;
 //set that to just midnight so as to grab the whole day
 $date = $start_day->format("%Y-%m-%d")." 00:00:00";
 $start_day -> setDate($date, DATE_FORMAT_ISO);

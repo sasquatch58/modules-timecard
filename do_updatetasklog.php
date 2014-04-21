@@ -19,7 +19,7 @@ $isOk = $obj->bind( $_POST );
 
 if (!$isOk) {
 	$AppUI->setMsg( $obj->getError(), UI_MSG_ERROR );
-	$AppUI->redirect();
+    $AppUI->redirect("m=timecard&tab=0");
 }
 
 if ($obj->task_log_date) {

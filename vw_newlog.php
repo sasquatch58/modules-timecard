@@ -86,7 +86,7 @@ global $TIMECARD_CONFIG;
 $can_edit_other_timesheets = $TIMECARD_CONFIG['minimum_edit_level']>=$AppUI->user_type;
 if (!$can_edit_other_timesheets) {
     if(isset($_GET['tlid']) && (( $task['task_log_creator'] != $AppUI->user_id) || (!isset($task['task_log_creator'])))) {
-        $AppUI->redirect( "m=public&a=access_denied" );
+        $AppUI->redirect(ACCESS_DENIED);
     }
 }
 

@@ -11,7 +11,7 @@ $report_type = w2PgetParam( $_REQUEST, "report_type", '' );
 $canRead = canView( $m );
 
 if(!$TIMECARD_CONFIG['minimum_report_level']>=$AppUI->user_type){
-	$AppUI->redirect( "m=public&a=access_denied" );
+	$AppUI->redirect(ACCESS_DENIED);
 }
 
 // get the prefered date format
