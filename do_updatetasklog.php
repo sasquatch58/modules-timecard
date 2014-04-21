@@ -10,11 +10,9 @@ $del = w2PgetParam( $_POST, 'del', 0 );
 $hdlog = w2PgetParam( $_POST, 'task_log_help_desk_id', 0 );
 
 if ($hdlog) {
-	require_once( $AppUI->getModuleClass( 'helpdesk' ) );
 	$obj = new CHDTaskLog();
 }
 else {
-	require_once( $AppUI->getModuleClass( 'tasks' ) );
 	$obj = new CTask_Log();
 }
 $isOk = $obj->bind( $_POST );

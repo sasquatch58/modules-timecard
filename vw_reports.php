@@ -14,8 +14,6 @@ if(!$TIMECARD_CONFIG['minimum_report_level']>=$AppUI->user_type){
 	$AppUI->redirect( "m=public&a=access_denied" );
 }
 
-$AppUI->savePlace();
-
 // get the prefered date format
 $df = $AppUI->getPref('SHDATEFORMAT');
 

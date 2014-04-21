@@ -90,8 +90,6 @@ if (!$can_edit_other_timesheets) {
     }
 }
 
-$AppUI->savePlace();
-
 if (isset( $task['task_log_date'] )) {
     $log_date = new w2p_Utilities_Date( $task['task_log_date'] ); 
 } else if (isset( $_GET['date'] )) {

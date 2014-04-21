@@ -38,8 +38,6 @@ if (isset( $_GET['user_id'] )) {
 }
 $user_id = $AppUI->getState( 'TimecardSelectedUser' ) ? $AppUI->getState( 'TimecardSelectedUser' ) : $AppUI->user_id;
 
-$AppUI->savePlace();
-
 if (isset( $_GET['start_date'] )) {
     $AppUI->setState( 'TimecardStartDate', $_GET['start_date'] );
 }
