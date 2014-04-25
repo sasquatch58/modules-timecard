@@ -4,6 +4,8 @@
 * Adapted for Web2project 2.1 by Eureka and colleagues from his company (DILA)
 **/
 
+$tab = $AppUI->processIntState('TimecardVwTab', $_GET, 'tab', 1);
+
 global $newTLogTabNum;
 $newTLogTabNum = 2;
 
@@ -12,7 +14,7 @@ $canRead = canView($m);
 $canEdit = canEdit($m);
 
 if (!$canRead) {
-	$AppUI->redirect("m=help&a=access_denied");
+	$AppUI->redirect(ACCESS_DENIED);
 }
 
 $TIMECARD_CONFIG = array();
@@ -20,13 +22,7 @@ require_once "./modules/timecard/config.php";
 
 // setup the title block
 $titleBlock = new w2p_Theme_TitleBlock('Time Card', 'TimeCard.png', $m, "$m.$a");
-
 $titleBlock->show();
-
-if (isset( $_GET['tab'] )) {
-	$AppUI->setState('TimecardVwTab', $_GET['tab']);
-}
-$tab = $AppUI->getState('TimecardVwTab') ? $AppUI->getState('TimecardVwTab') : 0;
 
 $tabBox = new CTabBox("?m=timecard&userid=" . $AppUI->user_id, "./modules/timecard/", $tab);
 $tabBox->add('vw_timecard', 'Weekly Time Card');

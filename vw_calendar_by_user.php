@@ -46,7 +46,6 @@ if ($user_id > 0) {
 	$AppUI->setState( 'TimecardSelectedUser', $user_id );
 }
 $user_id = $AppUI->getState( 'TimecardSelectedUser' ) ? $AppUI->getState( 'TimecardSelectedUser' ) : $AppUI->user_id;
-$AppUI->savePlace();
 
 if (!$log_start_date) {
 	$start_date->subtractSpan( new Date_Span( "14,0,0,0" ) );

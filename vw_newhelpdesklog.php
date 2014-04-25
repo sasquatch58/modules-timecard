@@ -12,10 +12,9 @@ $AppUI->loadCalendarJS();
 $m = $AppUI->checkFileName(w2PgetParam( $_GET, 'm', getReadableModule() ));
 $canEdit = canEdit( $m );
 if (!$canEdit) {
-	$AppUI->redirect( "m=public&a=access_denied" );
+	$AppUI->redirect(ACCESS_DENIED);
 }
 
-require_once $AppUI->getModuleClass('helpdesk');
 $df = $AppUI->getPref('SHDATEFORMAT');
 
 $tlid = (int)w2PgetParam( $_GET, 'tlid', 0 );
@@ -37,11 +36,9 @@ Global $TIMECARD_CONFIG;
 $can_edit_other_timesheets = $TIMECARD_CONFIG['minimum_edit_level']>=$AppUI->user_type;
 if (!$can_edit_other_timesheets){
 	if(isset($_GET['tlid']) && ((isset($helpdeskItemTask['task_log_creator']) && $helpdeskItemTask['task_log_creator'] != $AppUI->user_id)) ){
-		$AppUI->redirect( "m=public&a=access_denied" );
+		$AppUI->redirect(ACCESS_DENIED);
 	}
 }
-
-$AppUI->savePlace();
 
 if (isset( $helpdeskItemTask['task_log_date'] )) {
 	$log_date = new w2p_Utilities_Date( $helpdeskItemTask['task_log_date'] ); 
